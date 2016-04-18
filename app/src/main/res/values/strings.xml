@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">KGGank</string>
+
+    <string name="title_main">首页</string>
 </resources>

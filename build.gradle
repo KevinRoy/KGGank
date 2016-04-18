@@ -7,6 +7,9 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:2.1.0-beta1'
 
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'me.tatarka:gradle-retrolambda:3.3.0-beta4'
+        classpath 'me.tatarka.retrolambda.projectlombok:lombok.ast:0.2.3.a2'
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -32,4 +35,20 @@ ext {
     supportLibraryVersion = '23.3.0'
     guavaVersion = '19.0'
     junitVersion = '4.12'
+    butterknife = '7.0.1'
+    okhttp = '3.2.0'
+
+    retrofit = '2.0.1'
+    converterGson = '2.0.1'
+    adapterRxjava = '2.0.1'
+
+    rxandroid = '1.1.0'
+    rxjava = '1.1.0'
+
+    retrolambda = '2.1.0'
+    sourceCompatibilityVersion = JavaVersion.VERSION_1_8
+    targetCompatibilityVersion = JavaVersion.VERSION_1_8
+    retrolambdaJavaVersion = JavaVersion.VERSION_1_7
+
+
 }
