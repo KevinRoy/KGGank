@@ -20,5 +20,7 @@ public class BasePresenter<T extends IBaseView> {
             compositeSubscription.add(subscription);
     }
 
-
+    public T getView(){
+        return mView;
+    }
 }

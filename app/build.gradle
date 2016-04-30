@@ -56,11 +56,12 @@ dependencies {
     compile "com.android.support:support-v4:$rootProject.supportLibraryVersion"
     compile "com.google.guava:guava:$rootProject.guavaVersion"
     compile "com.jakewharton:butterknife:$rootProject.butterknife"
+    apt "com.jakewharton:butterknife-compiler:$rootProject.butterknifeCompiler"
     compile "com.squareup.okhttp3:okhttp:$rootProject.okhttp"
     compile "com.squareup.retrofit2:retrofit:$rootProject.retrofit"
     compile "com.squareup.retrofit2:converter-gson:$rootProject.converterGson"
     compile "com.squareup.retrofit2:adapter-rxjava:$rootProject.adapterRxjava"
     compile "io.reactivex:rxandroid:$rootProject.rxandroid"
     compile "io.reactivex:rxjava:$rootProject.rxjava"
-
+    compile "com.google.code.gson:gson:$rootProject.gson"
 }

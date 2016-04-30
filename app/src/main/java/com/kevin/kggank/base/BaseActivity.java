@@ -8,8 +8,9 @@ import android.view.MenuItem;
 
 import com.kevin.kggank.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by kevin on 16/4/14.
@@ -17,10 +18,11 @@ import butterknife.ButterKnife;
 public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity {
 
     @Nullable
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
 
     private boolean isBack = false;
+    private Unbinder unbinder;
 
     protected abstract int getLayout();
 
@@ -30,7 +32,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(getLayout());
-        ButterKnife.bind(this);
+        unbinder = ButterKnife.bind(this);
         initToolbar();
         initView();
     }
@@ -38,7 +40,7 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ButterKnife.unbind(this);
+        unbinder.unbind();
     }
 
     private void initToolbar() {

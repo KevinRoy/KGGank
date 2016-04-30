@@ -5,7 +5,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.1.0-beta1'
+        classpath 'com.android.tools.build:gradle:2.1.0'
 
         classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
         classpath 'me.tatarka:gradle-retrolambda:3.3.0-beta4'
@@ -35,7 +35,8 @@ ext {
     supportLibraryVersion = '23.3.0'
     guavaVersion = '19.0'
     junitVersion = '4.12'
-    butterknife = '7.0.1'
+    butterknife = '8.0.0'
+    butterknifeCompiler = '8.0.0'
     okhttp = '3.2.0'
 
     retrofit = '2.0.1'
@@ -50,5 +51,5 @@ ext {
     targetCompatibilityVersion = JavaVersion.VERSION_1_8
     retrolambdaJavaVersion = JavaVersion.VERSION_1_7
 
-
+    gson = '2.6.2'
 }

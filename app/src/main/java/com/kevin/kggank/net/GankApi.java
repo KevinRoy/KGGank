@@ -3,10 +3,14 @@ package com.kevin.kggank.net;
 import android.content.Context;
 
 import com.kevin.kggank.constants.Host;
+import com.kevin.kggank.net.service.GanhuoService;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -18,7 +22,8 @@ public class GankApi {
 
     private static final int TIMEOUT = 15;
     private static volatile GankApi mGankApi;
-    private Retrofit mRetrofit;
+    private Retrofit retrofit;
+    private GanhuoService ganhuoService;
 
     public static GankApi getInstance(Context context) {
         if (mGankApi == null) {
@@ -36,6 +41,18 @@ public class GankApi {
                 .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
+//                .addInterceptor(new Interceptor() {
+//                    @Override
+//                    public Response intercept(Chain chain) throws IOException {
+//                        okhttp3.Request.Builder builder = chain.request().newBuilder();
+//
+//                        builder.addHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
+//                        builder.addHeader("Connection", "Close");
+//                        builder.addHeader("Charset", "UTF-8");
+//
+//                        return chain.proceed(builder.build());
+//                    }
+//                })
                 .build();
 
         Retrofit.Builder builder = new Retrofit.Builder()
@@ -43,5 +60,13 @@ public class GankApi {
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .client(okHttpClient);
+
+        retrofit = builder.build();
+
+        ganhuoService = retrofit.create(GanhuoService.class);
+    }
+
+    public GanhuoService getGanhuoService() {
+        return ganhuoService;
     }
 }
