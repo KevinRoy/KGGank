@@ -2,6 +2,7 @@ package com.kevin.kggank.ui.view;
 
 import com.kevin.kggank.base.IBaseView;
 import com.kevin.kggank.entity.GanhuoEntity;
+import com.kevin.kggank.entity.GanhuoListEntity;
 
 import java.util.List;
 
@@ -10,5 +11,5 @@ import java.util.List;
  */
 public interface IMainView extends IBaseView {
 
-//    public List<GanhuoEntity> getGanhuoes();
+    public void getGirls(GanhuoListEntity ganhuoListEntity);
 }

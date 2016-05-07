@@ -1,5 +1,6 @@
 package com.kevin.kggank.base;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -15,7 +16,7 @@ import butterknife.Unbinder;
 /**
  * Created by kevin on 16/4/14.
  */
-public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity {
+public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity implements IBaseView {
 
     @Nullable
     @BindView(R.id.toolbar)
@@ -47,12 +48,12 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         setTitle("");
         setSupportActionBar(toolbar);
 
-        if (isBack()){
+        if (isBack()) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
     }
 
-    protected boolean isBack(){
+    protected boolean isBack() {
         return false;
     }
 
@@ -69,4 +70,9 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         return super.onOptionsItemSelected(item);
     }
 
+
+    @Override
+    public Context getContext() {
+        return this;
+    }
 }

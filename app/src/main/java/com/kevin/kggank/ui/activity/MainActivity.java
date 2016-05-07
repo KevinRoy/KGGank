@@ -1,11 +1,12 @@
 package com.kevin.kggank.ui.activity;
 
-import android.content.Context;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.kevin.kggank.R;
 import com.kevin.kggank.base.BaseActivity;
+import com.kevin.kggank.entity.GanhuoListEntity;
 import com.kevin.kggank.ui.presenter.MainPresenter;
 import com.kevin.kggank.ui.view.IMainView;
 
@@ -27,17 +28,10 @@ public class MainActivity extends BaseActivity implements IMainView {
         setTitle(R.string.title_main);
 
         mMainPresenter = new MainPresenter(this);
-        mMainPresenter.getGanhuoes();
-
     }
 
     @Override
-    public Context getContext() {
-        return this;
-    }
+    public void getGirls(GanhuoListEntity ganhuoListEntity) {
 
-//    @Override
-//    public List<GanhuoEntity> getGanhuoes() {
-//        return mMainPresenter.getGanhuoes();
-//    }
+    }
 }

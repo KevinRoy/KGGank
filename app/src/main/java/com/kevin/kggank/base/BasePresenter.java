@@ -1,5 +1,10 @@
 package com.kevin.kggank.base;
 
+import android.content.Context;
+
+import com.kevin.kggank.ui.view.IMainView;
+
+import retrofit2.http.PUT;
 import rx.Subscription;
 import rx.subscriptions.CompositeSubscription;
 
@@ -15,12 +20,22 @@ public class BasePresenter<T extends IBaseView> {
         this.mView = mView;
     }
 
-    public void subscribe(Subscription subscription) {
+    public void addSubscribe(Subscription subscription) {
         if (subscription != null)
             compositeSubscription.add(subscription);
     }
 
-    public T getView(){
+    public void unSubscribe() {
+        if (compositeSubscription.hasSubscriptions() || !compositeSubscription.isUnsubscribed()) {
+            compositeSubscription.clear();
+        }
+    }
+
+    public T getView() {
         return mView;
+    }
+
+    public Context getContext() {
+        return mView.getContext();
     }
 }

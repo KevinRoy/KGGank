@@ -5,6 +5,7 @@ import com.kevin.kggank.constants.Category;
 import com.kevin.kggank.entity.BaseResultEntity;
 import com.kevin.kggank.entity.CategoryResultEntity;
 import com.kevin.kggank.entity.GanhuoEntity;
+import com.kevin.kggank.entity.GanhuoListEntity;
 
 import java.util.List;
 
@@ -32,9 +33,9 @@ public interface GanhuoService {
      * @return
      */
     @GET("data/" + Category.FULI + "/{pageSize}/{pageNo}")
-    Observable<BaseResultEntity<List<GanhuoEntity>>> getGirlInfo(
-            @Path("pageSize") String pageSize,
-            @Path("pageNo") String pageNo
+    Observable<GanhuoListEntity> getGirlInfo(
+            @Path("pageSize") Integer pageSize,
+            @Path("pageNo") Integer pageNo
     );
 
     /**
@@ -45,9 +46,9 @@ public interface GanhuoService {
      * @return
      */
     @GET("data/" + Category.ANDROID + "/{pageSize}/{pageNo}")
-    Observable<BaseResultEntity<List<GanhuoEntity>>> getAndroidInfo(
-            @Path("pageSize") String pageSize,
-            @Path("pageNo") String pageNo
+    Observable<GanhuoListEntity> getAndroidInfo(
+            @Path("pageSize") Integer pageSize,
+            @Path("pageNo") Integer pageNo
     );
 
 
@@ -59,9 +60,9 @@ public interface GanhuoService {
      * @return
      */
     @GET("data/" + Category.IOS + "/{pageSize}/{pageNo}")
-    Observable<BaseResultEntity<List<GanhuoEntity>>> getIOSInfo(
-            @Path("pageSize") String pageSize,
-            @Path("pageNo") String pageNo
+    Observable<GanhuoListEntity> getIOSInfo(
+            @Path("pageSize") Integer pageSize,
+            @Path("pageNo") Integer pageNo
     );
 
     /**
@@ -72,9 +73,9 @@ public interface GanhuoService {
      * @return
      */
     @GET("data/" + Category.VIDEO + "/{pageSize}/{pageNo}")
-    Observable<BaseResultEntity<List<GanhuoEntity>>> getVideoInfo(
-            @Path("pageSize") String pageSize,
-            @Path("pageNo") String pageNo
+    Observable<GanhuoListEntity> getVideoInfo(
+            @Path("pageSize") Integer pageSize,
+            @Path("pageNo") Integer pageNo
     );
 
     /**
@@ -85,9 +86,9 @@ public interface GanhuoService {
      * @return
      */
     @GET("data/" + Category.WEB + "/{pageSize}/{pageNo}")
-    Observable<BaseResultEntity<List<GanhuoEntity>>> getWebInfo(
-            @Path("pageSize") String pageSize,
-            @Path("pageNo") String pageNo
+    Observable<GanhuoListEntity> getWebInfo(
+            @Path("pageSize") Integer pageSize,
+            @Path("pageNo") Integer pageNo
     );
 
     /**
@@ -98,9 +99,9 @@ public interface GanhuoService {
      * @return
      */
     @GET("data/" + Category.EXTEND + "/{pageSize}/{pageNo}")
-    Observable<BaseResultEntity<List<GanhuoEntity>>> getExtendInfo(
-            @Path("pageSize") String pageSize,
-            @Path("pageNo") String pageNo
+    Observable<GanhuoListEntity> getExtendInfo(
+            @Path("pageSize") Integer pageSize,
+            @Path("pageNo") Integer pageNo
     );
 
     /**
@@ -111,9 +112,9 @@ public interface GanhuoService {
      * @return
      */
     @GET("data/" + Category.ALL + "/{pageSize}/{pageNo}")
-    Observable<BaseResultEntity<List<GanhuoEntity>>> getAllInfo(
-            @Path("pageSize") String pageSize,
-            @Path("pageNo") String pageNo
+    Observable<GanhuoListEntity> getAllInfo(
+            @Path("pageSize") Integer pageSize,
+            @Path("pageNo") Integer pageNo
     );
 }
 

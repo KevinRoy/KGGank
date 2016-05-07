@@ -22,38 +22,27 @@ public class GankApi {
 
     private static final int TIMEOUT = 15;
     private static volatile GankApi mGankApi;
-    private Retrofit retrofit;
-    private GanhuoService ganhuoService;
+    private static Retrofit retrofit;
+    private OkHttpClient okHttpClient;
 
-    public static GankApi getInstance(Context context) {
+    public static GankApi getInstance() {
         if (mGankApi == null) {
             synchronized (GankApi.class) {
                 if (mGankApi == null) {
-                    mGankApi = new GankApi(context);
+                    mGankApi = new GankApi();
                 }
             }
         }
         return mGankApi;
     }
 
-    private GankApi(Context context) {
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+    private GankApi() {
+        okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
-//                .addInterceptor(new Interceptor() {
-//                    @Override
-//                    public Response intercept(Chain chain) throws IOException {
-//                        okhttp3.Request.Builder builder = chain.request().newBuilder();
-//
-//                        builder.addHeader("Content-Type", "application/x-www-form-urlencoded;charset=utf-8");
-//                        builder.addHeader("Connection", "Close");
-//                        builder.addHeader("Charset", "UTF-8");
-//
-//                        return chain.proceed(builder.build());
-//                    }
-//                })
                 .build();
+
 
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(Host.BASE_URL)
@@ -62,11 +51,9 @@ public class GankApi {
                 .client(okHttpClient);
 
         retrofit = builder.build();
-
-        ganhuoService = retrofit.create(GanhuoService.class);
     }
 
-    public GanhuoService getGanhuoService() {
-        return ganhuoService;
+    public <T> T create(Class<T> clasz) {
+        return retrofit.create(clasz);
     }
 }
