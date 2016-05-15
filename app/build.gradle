@@ -64,4 +64,9 @@ dependencies {
     compile "io.reactivex:rxandroid:$rootProject.rxandroid"
     compile "io.reactivex:rxjava:$rootProject.rxjava"
     compile "com.google.code.gson:gson:$rootProject.gson"
+    compile "com.jakewharton.timber:timber:$rootProject.timber"
+    compile "com.jakewharton.rxbinding:rxbinding:$rootProject.rxbinding"
+    compile "com.jakewharton.rxbinding:rxbinding-support-v4:$rootProject.rxbinding"
+    compile "com.jakewharton.rxbinding:rxbinding-appcompat-v7:$rootProject.rxbinding"
+    compile "com.jakewharton.rxbinding:rxbinding-recyclerview-v7:$rootProject.rxbinding"
 }
