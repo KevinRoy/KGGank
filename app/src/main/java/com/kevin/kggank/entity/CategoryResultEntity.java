@@ -8,13 +8,13 @@ import java.util.List;
  */
 public class CategoryResultEntity<T> extends BaseResultEntity<T> {
 
-    private List<String> categories;
+    private List<String> category;
 
-    public List<String> getCategories() {
-        return categories;
+    public List<String> getCategory() {
+        return category;
     }
 
-    public void setCategories(List<String> categories) {
-        this.categories = categories;
+    public void setCategory(List<String> category) {
+        this.category = category;
     }
 }

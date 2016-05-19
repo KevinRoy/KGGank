@@ -6,6 +6,7 @@ import com.kevin.kggank.entity.BaseResultEntity;
 import com.kevin.kggank.entity.CategoryResultEntity;
 import com.kevin.kggank.entity.GanhuoEntity;
 import com.kevin.kggank.entity.GanhuoListEntity;
+import com.kevin.kggank.entity.GanhuoOneDayEntity;
 
 import java.util.List;
 
@@ -19,7 +20,7 @@ import rx.Observable;
 public interface GanhuoService {
 
     @GET("day/{year}/{month}/{day}")
-    Observable<CategoryResultEntity<List<GanhuoEntity>>> getGanhuoes(
+    Observable<GanhuoOneDayEntity> getGanhuoOneDay(
             @Path("year") String year,
             @Path("month") String month,
             @Path("day") String day

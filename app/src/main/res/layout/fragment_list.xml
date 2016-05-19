@@ -5,6 +5,7 @@
     tools:context="com.kevin.kggank.ui.fragment.ListFragment">
 
     <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
