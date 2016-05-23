@@ -11,7 +11,7 @@ public class GanhuoDetailActivity extends BaseActivity {
 
     @Override
     protected int getLayout() {
-        return R.layout;
+        return 0;
     }
 
     @Override
