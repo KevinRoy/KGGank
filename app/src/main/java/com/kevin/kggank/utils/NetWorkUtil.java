@@ -1,4 +1,4 @@
-package com.kevin.kggank.util;
+package com.kevin.kggank.utils;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -20,7 +20,7 @@ import java.util.Enumeration;
  * Author: dingby(445850053@qq.com)
  * Date: 2016/4/12
  */
-public class NetWorkUtils {
+public class NetWorkUtil {
     /**
      * 网络类型 - 无连接
      */

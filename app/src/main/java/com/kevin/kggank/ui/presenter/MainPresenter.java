@@ -1,18 +1,13 @@
 package com.kevin.kggank.ui.presenter;
 
-import android.content.Context;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.kevin.kggank.base.BasePresenter;
-import com.kevin.kggank.entity.GanhuoEntity;
 import com.kevin.kggank.entity.GanhuoListEntity;
-import com.kevin.kggank.ui.activity.MainActivity;
 import com.kevin.kggank.ui.model.MainModel;
 import com.kevin.kggank.ui.view.IMainView;
-import com.kevin.kggank.util.NetWorkUtils;
-
-import java.util.List;
+import com.kevin.kggank.utils.NetWorkUtil;
 
 import rx.Observer;
 
@@ -31,7 +26,7 @@ public class MainPresenter extends BasePresenter<IMainView> {
 
 
     public void getGirls(int pageNo) {
-        if (NetWorkUtils.isConnectedByState(getContext())) {
+        if (NetWorkUtil.isConnectedByState(getContext())) {
             addSubscribe(mainModel.getGirls(pageNo).subscribe(new Observer<GanhuoListEntity>() {
                 @Override
                 public void onCompleted() {

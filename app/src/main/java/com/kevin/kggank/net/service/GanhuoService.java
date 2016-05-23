@@ -20,7 +20,7 @@ import rx.Observable;
 public interface GanhuoService {
 
     @GET("day/{year}/{month}/{day}")
-    Observable<GanhuoOneDayEntity> getGanhuoOneDay(
+    Observable<GanhuoOneDayEntity> getGanhuoOneDays(
             @Path("year") String year,
             @Path("month") String month,
             @Path("day") String day

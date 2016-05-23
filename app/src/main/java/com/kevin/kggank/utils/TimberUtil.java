@@ -1,4 +1,4 @@
-package com.kevin.kggank.util;
+package com.kevin.kggank.utils;
 
 import timber.log.Timber;
 
