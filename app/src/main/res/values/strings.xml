@@ -2,6 +2,7 @@
     <string name="app_name">KGGank</string>
 
     <string name="title_main">首页</string>
+    <string name="title_detail">详情</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

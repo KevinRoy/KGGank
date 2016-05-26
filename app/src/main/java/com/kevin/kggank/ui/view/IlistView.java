@@ -11,7 +11,5 @@ import java.util.List;
  */
 public interface IlistView extends IBaseView {
 
-    public void getGanhuoOneDay(GanhuoOneDayEntity.GanhuoOneDayDataEntity ganhuoOneDayDataEntity);
-
     public void getGanhuoListGril(List<GanhuoEntity> entities);
 }

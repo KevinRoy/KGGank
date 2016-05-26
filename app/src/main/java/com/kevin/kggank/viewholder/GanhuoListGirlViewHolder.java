@@ -1,5 +1,6 @@
 package com.kevin.kggank.viewholder;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -8,10 +9,12 @@ import com.kevin.kggank.R;
 import com.kevin.kggank.entity.GanhuoEntity;
 import com.kevin.kggank.event.GanhuoDetailEvent;
 import com.kevin.kggank.tool.RxBus;
+import com.kevin.kggank.ui.activity.GanhuoDetailActivity;
 import com.kevin.kggank.utils.DateUtil;
 import com.steve.creact.annotation.DataBean;
 import com.steve.creact.library.viewholder.BaseRecyclerViewHolder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -44,7 +47,9 @@ public class GanhuoListGirlViewHolder extends BaseRecyclerViewHolder<GanhuoEntit
 
         setOnItemClickListener(v -> {
             if (strings != null && strings.size() > 0) {
-                RxBus.INSTACE.send(new GanhuoDetailEvent(strings));
+                Intent intent = new Intent(getContext(), GanhuoDetailActivity.class);
+                intent.putStringArrayListExtra(GanhuoDetailActivity.DETAIL, (ArrayList<String>) strings);
+                getContext().startActivity(intent);
             }
         });
     }

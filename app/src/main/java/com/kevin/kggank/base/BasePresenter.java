@@ -25,7 +25,7 @@ public class BasePresenter<T extends IBaseView> {
             compositeSubscription.add(subscription);
     }
 
-    public void unSubscribe() {
+    public void unAllSubscribe() {
         if (compositeSubscription.hasSubscriptions() || !compositeSubscription.isUnsubscribed()) {
             compositeSubscription.clear();
         }

@@ -29,6 +29,8 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
 
     protected abstract void initView();
 
+    private BasePresenter presenter;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,12 +38,16 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         unbinder = ButterKnife.bind(this);
         initToolbar();
         initView();
+        presenter = new BasePresenter(this);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
         unbinder.unbind();
+        if (presenter != null) {
+            presenter.unAllSubscribe();
+        }
     }
 
     private void initToolbar() {

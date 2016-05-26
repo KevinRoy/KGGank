@@ -13,6 +13,7 @@ import com.kevin.kggank.entity.GanhuoEntity;
 import com.kevin.kggank.entity.GanhuoOneDayEntity;
 import com.kevin.kggank.ui.presenter.ListPresenter;
 import com.kevin.kggank.ui.view.IlistView;
+import com.kevin.kggank.utils.TimberUtil;
 import com.kevin.kggank.viewholder.databean.GanhuoListGirlDayBean;
 import com.steve.creact.library.adapter.CommonRecyclerAdapter;
 import com.steve.creact.library.display.DisplayBean;
@@ -50,11 +51,6 @@ public class ListFragment extends BaseFragment implements IlistView {
         listPresenter = new ListPresenter(this);
 
         list.setLayoutManager(new LinearLayoutManager(getActivity()));
-    }
-
-    @Override
-    public void getGanhuoOneDay(GanhuoOneDayEntity.GanhuoOneDayDataEntity ganhuoOneDayDataEntity) {
-
     }
 
     @Override

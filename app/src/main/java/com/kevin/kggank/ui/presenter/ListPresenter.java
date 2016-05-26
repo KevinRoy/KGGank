@@ -22,26 +22,6 @@ public class ListPresenter extends BasePresenter<IlistView> {
         getGirlInfo(1);
     }
 
-    public void getGanhuoOneDays(String year, String month, String day) {
-        addSubscribe(model.getGanhuoOneDays(year, month, day)
-                .subscribe(new Subscriber<GanhuoOneDayEntity>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(GanhuoOneDayEntity ganhuoOneDayEntity) {
-
-                    }
-                }));
-    }
-
     public void getGirlInfo(int pageNo) {
         addSubscribe(model.getGirlInfo(pageNo)
                 .subscribe(new Subscriber<GanhuoListEntity>() {
