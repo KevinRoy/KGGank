@@ -7,4 +7,12 @@
     <color name="color_B3ffffff">#B3ffffff</color>
     <color name="color_B3000000">#B3000000</color>
     <color name="color_7f000000">#7f000000</color>
+
+    <color name="color_B3e6e6e6">#B3e6e6e6</color>
+    <color name="color_B3a9ff79">#B3a9ff79</color>
+    <color name="color_B3ffa970">#B3ffa970</color>
+    <color name="color_B375c6f0">#B375c6f0</color>
+    <color name="color_B3ff9ccd">#B3ff9ccd</color>
+    <color name="color_B38b9cff">#B38b9cff</color>
+    <color name="color_B3ff8778">#B3ff8778</color>
 </resources>

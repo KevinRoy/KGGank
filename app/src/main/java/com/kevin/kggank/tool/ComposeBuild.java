@@ -12,4 +12,9 @@ public class ComposeBuild {
         return observable -> observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
+
+    public static <T> Observable.Transformer<T, T> applyMainSchedulers() {
+        return observable -> observable.subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
 }
