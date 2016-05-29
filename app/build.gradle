@@ -69,8 +69,9 @@ dependencies {
     compile "com.jakewharton.rxbinding:rxbinding-appcompat-v7:$rootProject.rxbinding"
     compile "com.jakewharton.rxbinding:rxbinding-recyclerview-v7:$rootProject.rxbinding"
     compile "com.github.bumptech.glide:glide:$rootProject.glide"
-    compile 'com.creact:powerful-adapter-lib-release:1.0.0@aar'
     provided "com.creact:powerful-adapter-annotations-release:$rootProject.powerfulAdapter"
     apt "com.creact:powerful-adapter-complier-release:$rootProject.powerfulAdapter"
     compile "com.android.support.constraint:constraint-layout:$rootProject.constraint"
+    compile 'com.creact:powerful-adapter-lib-release:1.0.0@aar'
+    compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha1'
 }

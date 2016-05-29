@@ -27,7 +27,6 @@ public class GanhuoTypeViewHolder extends BaseRecyclerViewHolder<GanhuoTypeEntit
     @ColorInt
     int bgColor;
 
-    @IdRes
     int imgRes;
 
     @Override
@@ -38,7 +37,6 @@ public class GanhuoTypeViewHolder extends BaseRecyclerViewHolder<GanhuoTypeEntit
         FrameLayout frameLayout = getView(R.id.layout);
 
         String type = data.getType();
-        int imgRes = 0;
 
         if (type.equals(Category.ANDROID)) {
             imgRes = R.mipmap.icon_android;
