@@ -1,11 +1,13 @@
 package com.kevin.kggank.ui.activity;
 
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.widget.ImageView;
 
 import com.jakewharton.rxbinding.view.RxView;
 import com.jakewharton.rxbinding.view.ViewAttachEvent;
+import com.jakewharton.rxbinding.widget.RxTextView;
 import com.kevin.kggank.R;
 import com.kevin.kggank.base.BaseActivity;
 
@@ -26,10 +28,17 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void initView() {
 
-        new Handler().postDelayed(() -> {
+//        RxView.attaches(loadingImg)
+//                .debounce()
 
-        }, 2000);
+
 
         ((AnimationDrawable) loadingImg.getDrawable()).start();
+
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+            finish();
+        }, 2000);
     }
 }
