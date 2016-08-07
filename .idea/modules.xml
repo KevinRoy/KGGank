@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/KGGank.iml" filepath="$PROJECT_DIR$/KGGank.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/kglib/kglib.iml" filepath="$PROJECT_DIR$/kglib/kglib.iml" />
     </modules>
   </component>
 </project>

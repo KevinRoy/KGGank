@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.bumptech.glide.Glide;
 import com.jakewharton.rxbinding.support.v7.widget.RxToolbar;
 import com.kevin.kggank.R;
 
