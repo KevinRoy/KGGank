@@ -30,6 +30,7 @@ dependencies {
     compile "com.jakewharton:butterknife:$rootProject.butterknife"
     apt "com.jakewharton:butterknife-compiler:$rootProject.butterknifeCompiler"
     compile "com.squareup.okhttp3:okhttp:$rootProject.okhttp"
+    compile "com.squareup.okhttp3:logging-interceptor:$rootProject.okhttp"
     compile "com.squareup.retrofit2:retrofit:$rootProject.retrofit"
     compile "com.squareup.retrofit2:converter-gson:$rootProject.converterGson"
     compile "com.squareup.retrofit2:adapter-rxjava:$rootProject.adapterRxjava"
