@@ -1,4 +1,4 @@
-package com.kevin.kglib.util;
+package com.kevin.kglib.utils;
 
 import timber.log.Timber;
 
@@ -7,7 +7,7 @@ import timber.log.Timber;
  * Created by kevin on 16/8/9.
  */
 
-public class TimberUtil {
+public class TimberUtils {
 
     private static final String KGTAG = "kgtag";
 

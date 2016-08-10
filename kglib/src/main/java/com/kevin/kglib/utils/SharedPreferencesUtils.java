@@ -1,16 +1,14 @@
-package com.kevin.kglib.util;
+package com.kevin.kglib.utils;
 
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-
-import java.util.Set;
 
 /**
  * SharedPreferences相关的util
  * Created by kevin on 16/8/9.
  */
 
-public class SharedPreferencesUtil {
+public class SharedPreferencesUtils {
 
     public static <T> T get(String key, T defValue) {
         if (defValue instanceof String) {
@@ -55,10 +53,10 @@ public class SharedPreferencesUtil {
     }
 
     public static SharedPreferences getPreference() {
-        return PreferenceManager.getDefaultSharedPreferences(ContextUtil.appContext);
+        return PreferenceManager.getDefaultSharedPreferences(ContextUtils.appContext);
     }
 
     public static SharedPreferences getPreference(String name) {
-        return ContextUtil.appContext.getSharedPreferences(name, 0);
+        return ContextUtils.appContext.getSharedPreferences(name, 0);
     }
 }

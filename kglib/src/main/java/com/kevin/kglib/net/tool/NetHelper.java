@@ -1,4 +1,6 @@
-package com.kevin.kglib.net;
+package com.kevin.kglib.net.tool;
+
+import com.kevin.kglib.net.NetworkManager;
 
 /**
  * Created by kevin on 16/8/9.

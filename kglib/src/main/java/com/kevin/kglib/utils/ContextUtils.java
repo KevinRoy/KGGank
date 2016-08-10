@@ -1,4 +1,4 @@
-package com.kevin.kglib.util;
+package com.kevin.kglib.utils;
 
 import android.content.Context;
 
@@ -7,7 +7,7 @@ import android.content.Context;
  * Created by kevin on 16/8/7.
  */
 
-public class ContextUtil {
+public class ContextUtils {
 
     public static Context appContext;
 

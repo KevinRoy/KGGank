@@ -6,14 +6,13 @@ import com.kevin.kglib.LibBaseConfig;
 import com.kevin.kglib.net.cookie.PersistentCookieJar;
 import com.kevin.kglib.net.cookie.cache.SetCookieCache;
 import com.kevin.kglib.net.cookie.persistence.SharedPrefsCookiePersistor;
-import com.kevin.kglib.util.ContextUtil;
-import com.kevin.kglib.util.TimberUtil;
+import com.kevin.kglib.net.tool.HttpLoggingHelper;
+import com.kevin.kglib.utils.ContextUtils;
 
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.CookieJar;
 import okhttp3.OkHttpClient;
-import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -24,7 +23,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class NetworkManager {
-    public static final String TAG = "okhttp";
 
     private static final int TIMEOUT = 15;
     private static volatile NetworkManager networkManager;
@@ -49,27 +47,15 @@ public class NetworkManager {
         if (TextUtils.isEmpty(baseUrl))
             throw new NullPointerException("baseUrl is null");
 
-
-
-
         CookieJar cookieJar =
-                new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(ContextUtil.appContext));
-
-        HttpLoggingInterceptor logging = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
-            @Override
-            public void log(String message) {
-                TimberUtil.d(TAG, message);
-            }
-        });
-
-        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+                new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(ContextUtils.appContext));
 
         okHttpClient = new OkHttpClient.Builder()
                 .connectTimeout(TIMEOUT, TimeUnit.SECONDS)
                 .readTimeout(TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
                 .cookieJar(cookieJar)
-                .addInterceptor(logging)
+                .addInterceptor(HttpLoggingHelper.setBody())
                 .build();
 
         Retrofit.Builder builder = new Retrofit.Builder()

@@ -1,6 +1,6 @@
 package com.kevin.kglib.net.cookie;
 
-import com.kevin.kglib.util.SharedPreferencesUtil;
+import com.kevin.kglib.utils.SharedPreferencesUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +8,7 @@ import java.util.List;
 import okhttp3.Cookie;
 
 /**
+ * cookie 管理
  * Created by kevin on 16/8/9.
  */
 
@@ -18,24 +19,32 @@ public enum CookieManager {
     public static final String COOKIE = "cookie_";
     public static final String COOKIE_SIZE = "cookie_size";
 
+    /**
+     * sava the cookies
+     * @param cookies
+     */
     public static void saveCookie(List<Cookie> cookies) {
         if (cookies == null || cookies.size() == 0)
             return;
 
         for (int i = 0; i < cookies.size(); i++) {
-            SharedPreferencesUtil.save(COOKIE + i, cookies.get(i).toString());
+            SharedPreferencesUtils.save(COOKIE + i, cookies.get(i).toString());
         }
 
-        SharedPreferencesUtil.save(COOKIE_SIZE, cookies.size());
+        SharedPreferencesUtils.save(COOKIE_SIZE, cookies.size());
     }
 
+    /**
+     * get the cookie
+     * @return
+     */
     public static List<String> getCookie() {
         List<String> cookies = new ArrayList<>();
 
-        int size = SharedPreferencesUtil.get(COOKIE_SIZE, 0);
+        int size = SharedPreferencesUtils.get(COOKIE_SIZE, 0);
 
         for (int i = 0; i < size; i++) {
-            String cookieString = SharedPreferencesUtil.get(COOKIE + i, "");
+            String cookieString = SharedPreferencesUtils.get(COOKIE + i, "");
             cookies.add(cookieString);
         }
         return cookies;

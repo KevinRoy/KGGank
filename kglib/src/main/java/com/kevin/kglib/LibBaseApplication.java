@@ -2,11 +2,10 @@ package com.kevin.kglib;
 
 import android.app.Application;
 
-import com.kevin.kglib.util.ContextUtil;
-import com.kevin.kglib.util.TimberUtil;
+import com.kevin.kglib.utils.ContextUtils;
+import com.kevin.kglib.utils.TimberUtils;
 
 import butterknife.ButterKnife;
-import timber.log.Timber;
 
 /**
  * Created by kevin on 16/6/18.
@@ -20,11 +19,11 @@ public abstract class LibBaseApplication extends Application {
         LibBaseConfig.baseUrl = getDefaultBaseUrl();
 
         if (BuildConfig.DEBUG) {
-            TimberUtil.plantDebugTree();
+            TimberUtils.plantDebugTree();
         }
 
         ButterKnife.setDebug(true);
-        ContextUtil.init(this);
+        ContextUtils.init(this);
     }
 
     protected abstract String getDefaultBaseUrl();
