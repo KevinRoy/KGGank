@@ -4,27 +4,11 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 
 /**
+ * 一些细微比如dp的操作和转化
  * Created by kevin on 16/7/9.
  */
 
 public class RuleUtils {
-
-    /**
-     * 获取屏幕的宽度
-     */
-    public static int getScreenWidth() {
-        DisplayMetrics displayMetrics = ContextUtils.appContext.getResources().getDisplayMetrics();
-        return displayMetrics.widthPixels;
-    }
-
-    /**
-     * 获取屏幕的高度
-     */
-    public static int getScreenHeight() {
-        DisplayMetrics displayMetrics = ContextUtils.appContext.getResources().getDisplayMetrics();
-        return displayMetrics.heightPixels;
-    }
-
     /**
      * 将dp转换成对应的px值
      */

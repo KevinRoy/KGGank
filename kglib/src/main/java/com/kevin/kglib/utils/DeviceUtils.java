@@ -6,6 +6,7 @@ import android.content.pm.PackageManager;
 import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 
 /**
  * 和硬件相关的 util
@@ -90,5 +91,21 @@ public class DeviceUtils {
             versionCode = -1;
         }
         return versionCode;
+    }
+
+    /**
+     * 获取屏幕的宽度
+     */
+    public static int getScreenWidth() {
+        DisplayMetrics displayMetrics = ContextUtils.appContext.getResources().getDisplayMetrics();
+        return displayMetrics.widthPixels;
+    }
+
+    /**
+     * 获取屏幕的高度
+     */
+    public static int getScreenHeight() {
+        DisplayMetrics displayMetrics = ContextUtils.appContext.getResources().getDisplayMetrics();
+        return displayMetrics.heightPixels;
     }
 }

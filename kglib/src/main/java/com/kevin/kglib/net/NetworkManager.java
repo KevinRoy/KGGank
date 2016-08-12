@@ -8,11 +8,19 @@ import com.kevin.kglib.net.cookie.cache.SetCookieCache;
 import com.kevin.kglib.net.cookie.persistence.SharedPrefsCookiePersistor;
 import com.kevin.kglib.net.tool.HttpLoggingHelper;
 import com.kevin.kglib.utils.ContextUtils;
+import com.kevin.kglib.utils.FileUtils;
+import com.kevin.kglib.utils.NetWorkUtils;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
+import okhttp3.Cache;
+import okhttp3.CacheControl;
 import okhttp3.CookieJar;
+import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -29,6 +37,22 @@ public class NetworkManager {
     private static Retrofit retrofit;
     private OkHttpClient okHttpClient;
     private String baseUrl;
+    private static final Interceptor REWRITE_CACHE_CONTROL_INTERCEPTOR = chain -> {
+        Request request = chain.request();
+
+        if (!NetWorkUtils.isConnected()) {
+            request = request.newBuilder()
+                    .cacheControl(CacheControl.FORCE_CACHE)
+                    .build();
+        }
+
+        Response response = chain.proceed(request);
+
+        return response
+                .newBuilder()
+                .header("Cache-Control", "public, max-age=60, max-stale=2419200")
+                .removeHeader("Pragma").build();
+    };
 
     public static NetworkManager getInstance() {
         if (networkManager == null) {
@@ -55,7 +79,9 @@ public class NetworkManager {
                 .readTimeout(TIMEOUT, TimeUnit.SECONDS)
                 .writeTimeout(TIMEOUT, TimeUnit.SECONDS)
                 .cookieJar(cookieJar)
+                .cache(getCache())
                 .addInterceptor(HttpLoggingHelper.setBody())
+                .addNetworkInterceptor(REWRITE_CACHE_CONTROL_INTERCEPTOR)
                 .build();
 
         Retrofit.Builder builder = new Retrofit.Builder()
@@ -65,6 +91,17 @@ public class NetworkManager {
                 .client(okHttpClient);
 
         retrofit = builder.build();
+    }
+
+    private Cache getCache() {
+        int cacheSize;
+        String cachePath = FileUtils.getCacheDir();
+        if (FileUtils.isSDCardMounted()) {
+            cacheSize = 100 * 1024 * 1024;
+        } else {
+            cacheSize = 20 * 1024 * 1024;
+        }
+        return new Cache(new File(cachePath), cacheSize);
     }
 
     public <T> T create(Class<T> clasz) {
