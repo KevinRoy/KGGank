@@ -6,6 +6,7 @@ import com.kevin.kglib.LibBaseConfig;
 import com.kevin.kglib.net.cookie.PersistentCookieJar;
 import com.kevin.kglib.net.cookie.cache.SetCookieCache;
 import com.kevin.kglib.net.cookie.persistence.SharedPrefsCookiePersistor;
+import com.kevin.kglib.net.tool.ConverterFactoryHelper;
 import com.kevin.kglib.net.tool.HttpLoggingHelper;
 import com.kevin.kglib.utils.ContextUtils;
 import com.kevin.kglib.utils.FileUtils;
@@ -21,6 +22,7 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import retrofit2.Converter;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -37,6 +39,7 @@ public class NetworkManager {
     private static Retrofit retrofit;
     private OkHttpClient okHttpClient;
     private String baseUrl;
+    private Converter.Factory factory;
     private static final Interceptor REWRITE_CACHE_CONTROL_INTERCEPTOR = chain -> {
         Request request = chain.request();
 
@@ -71,6 +74,12 @@ public class NetworkManager {
         if (TextUtils.isEmpty(baseUrl))
             throw new NullPointerException("baseUrl is null");
 
+        factory = LibBaseConfig.factory;
+
+        if (factory == null)
+            factory = ConverterFactoryHelper.createGsonFactory();
+
+
         CookieJar cookieJar =
                 new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(ContextUtils.appContext));
 
@@ -86,13 +95,17 @@ public class NetworkManager {
 
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl(baseUrl)
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(factory)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .client(okHttpClient);
 
         retrofit = builder.build();
     }
 
+    /**
+     * 缓存
+     * @return
+     */
     private Cache getCache() {
         int cacheSize;
         String cachePath = FileUtils.getCacheDir();

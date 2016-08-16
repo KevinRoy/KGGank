@@ -1,5 +1,7 @@
 package com.kevin.kglib;
 
+import retrofit2.Converter;
+
 /**
  * Created by kevin on 16/8/7.
  */
@@ -7,4 +9,6 @@ package com.kevin.kglib;
 public class LibBaseConfig {
 
     public static String baseUrl;
+
+    public static Converter.Factory factory;
 }
