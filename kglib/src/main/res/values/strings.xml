@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">KGLib</string>
+
+    <string name="limit_input_size">不能超过%1$d字</string>
 </resources>

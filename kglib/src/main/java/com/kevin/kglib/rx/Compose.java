@@ -1,5 +1,7 @@
 package com.kevin.kglib.rx;
 
+import java.util.concurrent.TimeUnit;
+
 import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -11,8 +13,39 @@ import rx.schedulers.Schedulers;
 
 public class Compose {
 
+    public static final int Time = 5000;  //5s
+
+    /**
+     * normal
+     *
+     * @param <T>
+     * @return
+     */
     public static <T> Observable.Transformer<T, T> applySchedulers() {
         return observable -> observable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    /**
+     * delay time
+     * @param <T>
+     * @return
+     */
+    public static <T> Observable.Transformer<T, T> applyTimeSchedulers() {
+        return observable -> observable.throttleFirst(Time, TimeUnit.MILLISECONDS)
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    /**
+     * set delay time
+     * @param time
+     * @param <T>
+     * @return
+     */
+    public static <T> Observable.Transformer<T, T> applyTimeSchedulers(int time) {
+        return observable -> observable.throttleFirst(time, TimeUnit.MILLISECONDS)
+                .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread());
     }
 }
