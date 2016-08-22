@@ -6,7 +6,7 @@ import com.kevin.kggank.entity.GanhuoListEntity;
 import com.kevin.kggank.net.service.GanhuoService;
 import com.kevin.kggank.tool.ComposeBuild;
 import com.kevin.kggank.ui.presenter.MainPresenter;
-import com.kevin.kggank.utils.RxUtil;
+import com.kevin.kglib.net.tool.NetHelper;
 
 import rx.Observable;
 
@@ -23,7 +23,7 @@ public class MainModel extends BaseModel<MainPresenter> {
     }
 
     public Observable<GanhuoListEntity> getGirls(int pageNo) {
-        return RxUtil.create(GanhuoService.class)
+        return NetHelper.create(GanhuoService.class)
                 .getAndroidInfo(Constants.PAGE_SIZE, pageNo)
                 .compose(ComposeBuild.applySchedulers());
     }

@@ -3,11 +3,10 @@ package com.kevin.kggank.ui.model;
 import com.kevin.kggank.base.BaseModel;
 import com.kevin.kggank.constants.Constants;
 import com.kevin.kggank.entity.GanhuoListEntity;
-import com.kevin.kggank.entity.GanhuoOneDayEntity;
 import com.kevin.kggank.net.service.GanhuoService;
 import com.kevin.kggank.tool.ComposeBuild;
 import com.kevin.kggank.ui.presenter.ListPresenter;
-import com.kevin.kggank.utils.RxUtil;
+import com.kevin.kglib.net.tool.NetHelper;
 
 import rx.Observable;
 
@@ -22,7 +21,7 @@ public class ListModel extends BaseModel<ListPresenter> {
     }
 
     public Observable<GanhuoListEntity> getGirlInfo(int pageNo){
-        return RxUtil.create(GanhuoService.class)
+        return NetHelper.create(GanhuoService.class)
                 .getGirlInfo(Constants.PAGE_SIZE, pageNo)
                 .compose(ComposeBuild.applySchedulers());
     }
