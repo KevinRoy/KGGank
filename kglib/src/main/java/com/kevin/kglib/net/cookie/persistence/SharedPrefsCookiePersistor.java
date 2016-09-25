@@ -70,8 +70,13 @@ public class SharedPrefsCookiePersistor implements CookiePersistor {
         editor.apply();
     }
 
+    /**
+     * create the cookie
+     * @param cookie
+     * @return
+     */
     private static String createCookieKey(Cookie cookie) {
-        return (cookie.secure() ? "https" : "http") + "://" + cookie.domain() + cookie.path() + "|" + cookie.name();
+        return (cookie.secure() ? "https" : "http") + "://" + cookie.domain() + cookie.path() + "|" + cookie.name() + "|" + cookie.value();
     }
 
     @Override
