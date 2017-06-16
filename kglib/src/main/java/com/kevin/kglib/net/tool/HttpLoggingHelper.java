@@ -1,6 +1,6 @@
 package com.kevin.kglib.net.tool;
 
-import com.kevin.kglib.utils.TimberUtils;
+import com.kevin.kglib.utils.LogUtils;
 
 import okhttp3.logging.HttpLoggingInterceptor;
 
@@ -14,7 +14,7 @@ public class HttpLoggingHelper {
     public static final String TAG = "okhttp";
 
     private static HttpLoggingInterceptor logging = new HttpLoggingInterceptor(message -> {
-        TimberUtils.d(TAG, message);
+        LogUtils.d(TAG, message);
     });
 
     public static HttpLoggingInterceptor setBody() {

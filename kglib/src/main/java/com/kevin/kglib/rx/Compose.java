@@ -2,9 +2,8 @@ package com.kevin.kglib.rx;
 
 import java.util.concurrent.TimeUnit;
 
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
+import io.reactivex.FlowableTransformer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
  * common compose
@@ -21,17 +20,18 @@ public class Compose {
      * @param <T>
      * @return
      */
-    public static <T> Observable.Transformer<T, T> applySchedulers() {
-        return observable -> observable.subscribeOn(Schedulers.io())
+    public static <T> FlowableTransformer<T, T> applySchedulers() {
+        return observable -> observable.subscribeOn(io.reactivex.schedulers.Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
 
     /**
      * delay time
+     *
      * @param <T>
      * @return
      */
-    public static <T> Observable.Transformer<T, T> applyTimeSchedulers() {
+    public static <T> FlowableTransformer<T, T> applyTimeSchedulers() {
         return observable -> observable.throttleFirst(Time, TimeUnit.MILLISECONDS)
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread());
@@ -39,11 +39,12 @@ public class Compose {
 
     /**
      * set delay time
+     *
      * @param time
      * @param <T>
      * @return
      */
-    public static <T> Observable.Transformer<T, T> applyTimeSchedulers(int time) {
+    public static <T> FlowableTransformer<T, T> applyTimeSchedulers(int time) {
         return observable -> observable.throttleFirst(time, TimeUnit.MILLISECONDS)
                 .subscribeOn(AndroidSchedulers.mainThread())
                 .observeOn(AndroidSchedulers.mainThread());

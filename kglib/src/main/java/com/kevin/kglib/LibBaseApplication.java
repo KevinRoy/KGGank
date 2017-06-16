@@ -2,10 +2,7 @@ package com.kevin.kglib;
 
 import android.app.Application;
 
-import com.kevin.kglib.net.tool.ConverterFactoryHelper;
-import com.kevin.kglib.net.tool.HttpLoggingHelper;
 import com.kevin.kglib.utils.ContextUtils;
-import com.kevin.kglib.utils.TimberUtils;
 
 import butterknife.ButterKnife;
 import retrofit2.Converter;
@@ -20,15 +17,12 @@ public abstract class LibBaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        ContextUtils.init(this);
+
         LibBaseConfig.baseUrl = getDefaultBaseUrl();
         LibBaseConfig.factory = getConverterFactory();
 
-        if (BuildConfig.DEBUG) {
-            TimberUtils.plantDebugTree();
-        }
-
         ButterKnife.setDebug(true);
-        ContextUtils.init(this);
     }
 
     /**

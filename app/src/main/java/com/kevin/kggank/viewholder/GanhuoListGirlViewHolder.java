@@ -7,8 +7,6 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.kevin.kggank.R;
 import com.kevin.kggank.entity.GanhuoEntity;
-import com.kevin.kggank.event.GanhuoDetailEvent;
-import com.kevin.kggank.tool.RxBus;
 import com.kevin.kggank.ui.activity.GanhuoDetailActivity;
 import com.kevin.kggank.utils.DateUtil;
 import com.steve.creact.annotation.DataBean;

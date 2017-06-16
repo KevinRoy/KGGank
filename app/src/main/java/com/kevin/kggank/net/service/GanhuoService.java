@@ -2,17 +2,12 @@ package com.kevin.kggank.net.service;
 
 
 import com.kevin.kggank.constants.Category;
-import com.kevin.kggank.entity.BaseResultEntity;
-import com.kevin.kggank.entity.CategoryResultEntity;
-import com.kevin.kggank.entity.GanhuoEntity;
 import com.kevin.kggank.entity.GanhuoListEntity;
 import com.kevin.kggank.entity.GanhuoOneDayEntity;
 
-import java.util.List;
-
+import io.reactivex.Flowable;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
-import rx.Observable;
 
 /**
  * Created by kevin on 16/4/18.
@@ -20,7 +15,7 @@ import rx.Observable;
 public interface GanhuoService {
 
     @GET("day/{year}/{month}/{day}")
-    Observable<GanhuoOneDayEntity> getGanhuoOneDays(
+    Flowable<GanhuoOneDayEntity> getGanhuoOneDays(
             @Path("year") String year,
             @Path("month") String month,
             @Path("day") String day
@@ -34,7 +29,7 @@ public interface GanhuoService {
      * @return
      */
     @GET("data/" + Category.FULI + "/{pageSize}/{pageNo}")
-    Observable<GanhuoListEntity> getGirlInfo(
+    Flowable<GanhuoListEntity> getGirlInfo(
             @Path("pageSize") Integer pageSize,
             @Path("pageNo") Integer pageNo
     );
@@ -47,7 +42,7 @@ public interface GanhuoService {
      * @return
      */
     @GET("data/" + Category.ANDROID + "/{pageSize}/{pageNo}")
-    Observable<GanhuoListEntity> getAndroidInfo(
+    Flowable<GanhuoListEntity> getAndroidInfo(
             @Path("pageSize") Integer pageSize,
             @Path("pageNo") Integer pageNo
     );
@@ -61,7 +56,7 @@ public interface GanhuoService {
      * @return
      */
     @GET("data/" + Category.IOS + "/{pageSize}/{pageNo}")
-    Observable<GanhuoListEntity> getIOSInfo(
+    Flowable<GanhuoListEntity> getIOSInfo(
             @Path("pageSize") Integer pageSize,
             @Path("pageNo") Integer pageNo
     );
@@ -74,7 +69,7 @@ public interface GanhuoService {
      * @return
      */
     @GET("data/" + Category.VIDEO + "/{pageSize}/{pageNo}")
-    Observable<GanhuoListEntity> getVideoInfo(
+    Flowable<GanhuoListEntity> getVideoInfo(
             @Path("pageSize") Integer pageSize,
             @Path("pageNo") Integer pageNo
     );
@@ -87,7 +82,7 @@ public interface GanhuoService {
      * @return
      */
     @GET("data/" + Category.WEB + "/{pageSize}/{pageNo}")
-    Observable<GanhuoListEntity> getWebInfo(
+    Flowable<GanhuoListEntity> getWebInfo(
             @Path("pageSize") Integer pageSize,
             @Path("pageNo") Integer pageNo
     );
@@ -100,7 +95,7 @@ public interface GanhuoService {
      * @return
      */
     @GET("data/" + Category.EXTEND + "/{pageSize}/{pageNo}")
-    Observable<GanhuoListEntity> getExtendInfo(
+    Flowable<GanhuoListEntity> getExtendInfo(
             @Path("pageSize") Integer pageSize,
             @Path("pageNo") Integer pageNo
     );
@@ -113,7 +108,7 @@ public interface GanhuoService {
      * @return
      */
     @GET("data/" + Category.ALL + "/{pageSize}/{pageNo}")
-    Observable<GanhuoListEntity> getAllInfo(
+    Flowable<GanhuoListEntity> getAllInfo(
             @Path("pageSize") Integer pageSize,
             @Path("pageNo") Integer pageNo
     );

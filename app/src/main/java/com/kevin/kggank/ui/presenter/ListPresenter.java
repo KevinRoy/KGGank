@@ -2,12 +2,10 @@ package com.kevin.kggank.ui.presenter;
 
 import com.kevin.kggank.base.BasePresenter;
 import com.kevin.kggank.entity.GanhuoListEntity;
-import com.kevin.kggank.entity.GanhuoOneDayEntity;
 import com.kevin.kggank.ui.model.ListModel;
 import com.kevin.kggank.ui.view.IlistView;
-import com.kevin.kggank.utils.TimberUtil;
 
-import rx.Subscriber;
+import io.reactivex.subscribers.DisposableSubscriber;
 
 /**
  * Created by kevin on 16/5/18.
@@ -24,17 +22,7 @@ public class ListPresenter extends BasePresenter<IlistView> {
 
     public void getGirlInfo(int pageNo) {
         addSubscribe(model.getGirlInfo(pageNo)
-                .subscribe(new Subscriber<GanhuoListEntity>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-                        TimberUtil.d(e.toString());
-                    }
-
+                .subscribeWith(new DisposableSubscriber<GanhuoListEntity>() {
                     @Override
                     public void onNext(GanhuoListEntity ganhuoListEntity) {
                         if (ganhuoListEntity == null ||
@@ -43,6 +31,16 @@ public class ListPresenter extends BasePresenter<IlistView> {
                             return;
 
                         getView().getGanhuoListGril(ganhuoListEntity.getResults());
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
                     }
                 }));
     }

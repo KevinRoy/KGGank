@@ -3,13 +3,11 @@ package com.kevin.kggank.base;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.bumptech.glide.Glide;
-import com.jakewharton.rxbinding.support.v7.widget.RxToolbar;
 import com.kevin.kggank.R;
+import com.kevin.kglib.base.LibBaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -18,7 +16,7 @@ import butterknife.Unbinder;
 /**
  * Created by kevin on 16/4/14.
  */
-public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity implements IBaseView {
+public abstract class BaseActivity extends LibBaseActivity{
 
     @Nullable
     @BindView(R.id.toolbar)
@@ -31,8 +29,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
 
     protected abstract void initView();
 
-    private BasePresenter presenter;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,16 +36,6 @@ public abstract class BaseActivity<P extends BasePresenter> extends AppCompatAct
         unbinder = ButterKnife.bind(this);
         initToolbar();
         initView();
-        presenter = new BasePresenter(this);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        unbinder.unbind();
-        if (presenter != null) {
-            presenter.unAllSubscribe();
-        }
     }
 
     private void initToolbar() {

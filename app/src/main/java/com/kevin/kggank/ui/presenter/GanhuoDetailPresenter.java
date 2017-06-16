@@ -1,7 +1,6 @@
 package com.kevin.kggank.ui.presenter;
 
 import com.kevin.kggank.base.BasePresenter;
-import com.kevin.kggank.base.IBaseView;
 import com.kevin.kggank.entity.GanhuoOneDayEntity;
 import com.kevin.kggank.ui.model.GanhuoDetailModel;
 import com.kevin.kggank.ui.view.IGanhuoDetailView;
@@ -9,7 +8,7 @@ import com.kevin.kggank.ui.view.IGanhuoDetailView;
 import java.util.ArrayList;
 import java.util.List;
 
-import rx.Subscriber;
+import io.reactivex.subscribers.DisposableSubscriber;
 
 /**
  * Created by kevin on 16/5/23.
@@ -32,17 +31,7 @@ public class GanhuoDetailPresenter extends BasePresenter<IGanhuoDetailView> {
 
     public void getGanhuoOneDays(String year, String month, String day) {
         addSubscribe(model.getGanhuoOneDays(year, month, day)
-                .subscribe(new Subscriber<GanhuoOneDayEntity>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
+                .subscribeWith(new DisposableSubscriber<GanhuoOneDayEntity>() {
                     @Override
                     public void onNext(GanhuoOneDayEntity ganhuoOneDayEntity) {
                         if (ganhuoOneDayEntity == null ||
@@ -50,6 +39,16 @@ public class GanhuoDetailPresenter extends BasePresenter<IGanhuoDetailView> {
                             return;
 
                         getView().getGanhuoOneDay(ganhuoOneDayEntity.getResults());
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+
+                    }
+
+                    @Override
+                    public void onComplete() {
+
                     }
                 }));
     }

@@ -4,11 +4,11 @@ import com.kevin.kggank.base.BaseModel;
 import com.kevin.kggank.constants.Constants;
 import com.kevin.kggank.entity.GanhuoListEntity;
 import com.kevin.kggank.net.service.GanhuoService;
-import com.kevin.kggank.tool.ComposeBuild;
 import com.kevin.kggank.ui.presenter.ListPresenter;
-import com.kevin.kglib.net.tool.NetHelper;
+import com.kevin.kglib.rx.Compose;
+import com.kevin.kglib.rx.RxUtils;
 
-import rx.Observable;
+import io.reactivex.Flowable;
 
 
 /**
@@ -20,9 +20,9 @@ public class ListModel extends BaseModel<ListPresenter> {
         super(presenter);
     }
 
-    public Observable<GanhuoListEntity> getGirlInfo(int pageNo){
-        return NetHelper.create(GanhuoService.class)
+    public Flowable<GanhuoListEntity> getGirlInfo(int pageNo){
+        return RxUtils.create(GanhuoService.class)
                 .getGirlInfo(Constants.PAGE_SIZE, pageNo)
-                .compose(ComposeBuild.applySchedulers());
+                .compose(Compose.applySchedulers());
     }
 }

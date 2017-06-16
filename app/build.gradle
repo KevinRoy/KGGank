@@ -42,10 +42,6 @@ android {
     }
 }
 
-retrolambda {
-    javaVersion rootProject.ext.retrolambdaJavaVersion
-}
-
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile "junit:junit:$rootProject.ext.junitVersion"

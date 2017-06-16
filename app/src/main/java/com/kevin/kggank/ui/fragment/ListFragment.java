@@ -6,14 +6,11 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
-import com.jakewharton.rxbinding.support.v7.widget.RxRecyclerView;
 import com.kevin.kggank.R;
 import com.kevin.kggank.base.BaseFragment;
 import com.kevin.kggank.entity.GanhuoEntity;
-import com.kevin.kggank.entity.GanhuoOneDayEntity;
 import com.kevin.kggank.ui.presenter.ListPresenter;
 import com.kevin.kggank.ui.view.IlistView;
-import com.kevin.kggank.utils.TimberUtil;
 import com.kevin.kggank.viewholder.databean.GanhuoListGirlDayBean;
 import com.steve.creact.library.adapter.CommonRecyclerAdapter;
 import com.steve.creact.library.display.DisplayBean;

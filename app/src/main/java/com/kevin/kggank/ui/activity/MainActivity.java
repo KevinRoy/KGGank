@@ -1,6 +1,5 @@
 package com.kevin.kggank.ui.activity;
 
-import android.graphics.ImageFormat;
 import android.support.v4.app.FragmentTabHost;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +17,6 @@ import com.kevin.kggank.ui.presenter.MainPresenter;
 import com.kevin.kggank.ui.view.IMainView;
 
 import butterknife.BindView;
-import timber.log.Timber;
 
 public class MainActivity extends BaseActivity implements IMainView {
 
@@ -62,11 +60,8 @@ public class MainActivity extends BaseActivity implements IMainView {
         tabhost.setCurrentTab(0);
         tabhost.setOnTabChangedListener(tabId -> {
             if (tabId.endsWith("0")) {
-                Timber.d("0");
             } else if (tabId.endsWith("1")) {
-                Timber.d("1");
             } else {
-                Timber.d("2");
             }
         });
     }

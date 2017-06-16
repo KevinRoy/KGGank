@@ -1,10 +1,11 @@
 package com.kevin.kglib.rx;
 
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.subjects.PublishSubject;
-import rx.subjects.SerializedSubject;
-import rx.subjects.Subject;
+import com.jakewharton.rxrelay2.PublishRelay;
+import com.jakewharton.rxrelay2.Relay;
+
+import io.reactivex.BackpressureStrategy;
+import io.reactivex.Flowable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 /**
  * RxBus
@@ -15,20 +16,21 @@ public enum RxBus {
 
     INSTACE;
 
-    private final Subject<Object, Object> _bus = new SerializedSubject<>(PublishSubject.create());
+    private static final Relay<Object> _bus = PublishRelay.create().toSerialized();
 
     public void send(Object o) {
         if (hasObservers()) {
             try {
-                _bus.onNext(o);
+                _bus.accept(o);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
     }
 
-    public Observable<Object> toObserverable() {
-        return _bus.observeOn(AndroidSchedulers.mainThread());
+    public Flowable<Object> asFlowable() {
+        return _bus.toFlowable(BackpressureStrategy.LATEST)
+                .observeOn(AndroidSchedulers.mainThread());
     }
 
     public boolean hasObservers() {

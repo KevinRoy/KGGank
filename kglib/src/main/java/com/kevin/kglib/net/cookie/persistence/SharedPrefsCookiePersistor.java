@@ -54,9 +54,7 @@ public class SharedPrefsCookiePersistor implements CookiePersistor {
     public void saveAll(Collection<Cookie> cookies) {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         for (Cookie cookie : cookies) {
-            if (cookie.persistent()) {
-                editor.putString(createCookieKey(cookie), new SerializableCookie().encode(cookie));
-            }
+            editor.putString(createCookieKey(cookie), new SerializableCookie().encode(cookie));
         }
         editor.apply();
     }
@@ -72,6 +70,7 @@ public class SharedPrefsCookiePersistor implements CookiePersistor {
 
     /**
      * create the cookie
+     *
      * @param cookie
      * @return
      */

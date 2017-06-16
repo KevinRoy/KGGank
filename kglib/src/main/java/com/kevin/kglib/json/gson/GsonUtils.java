@@ -1,7 +1,7 @@
 package com.kevin.kglib.json.gson;
 
 import com.google.gson.Gson;
-import com.kevin.kglib.utils.TimberUtils;
+import com.kevin.kglib.utils.LogUtils;
 
 /**
  * gson utils
@@ -17,7 +17,7 @@ public class GsonUtils {
         try {
             result = gson.fromJson(json, clasz);
         } catch (Exception e) {
-            TimberUtils.d("不能解析" + clasz.getName());
+            LogUtils.d("不能解析" + clasz.getName());
         }
         return result;
     }
@@ -27,7 +27,7 @@ public class GsonUtils {
         try {
             result = gson.toJson(object);
         } catch (Exception e) {
-            TimberUtils.d("对象无法转换json");
+            LogUtils.d("对象无法转换json");
         }
         return result;
     }

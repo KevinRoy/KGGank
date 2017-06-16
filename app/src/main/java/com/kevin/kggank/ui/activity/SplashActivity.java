@@ -5,15 +5,10 @@ import android.graphics.drawable.AnimationDrawable;
 import android.os.Handler;
 import android.widget.ImageView;
 
-import com.jakewharton.rxbinding.view.RxView;
-import com.jakewharton.rxbinding.view.ViewAttachEvent;
-import com.jakewharton.rxbinding.widget.RxTextView;
 import com.kevin.kggank.R;
 import com.kevin.kggank.base.BaseActivity;
 
 import butterknife.BindView;
-import rx.Observable;
-import rx.functions.Func1;
 
 public class SplashActivity extends BaseActivity {
 

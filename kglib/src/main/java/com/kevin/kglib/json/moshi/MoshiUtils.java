@@ -1,6 +1,6 @@
 package com.kevin.kglib.json.moshi;
 
-import com.kevin.kglib.utils.TimberUtils;
+import com.kevin.kglib.utils.LogUtils;
 import com.squareup.moshi.JsonAdapter;
 import com.squareup.moshi.Moshi;
 
@@ -19,7 +19,7 @@ public class MoshiUtils {
             JsonAdapter<T> jsonAdapter = mMoshi.adapter(clasz);
             result = jsonAdapter.fromJson(json);
         } catch (Exception e) {
-            TimberUtils.d("不能解析" + clasz.getName());
+            LogUtils.d("不能解析" + clasz.getName());
         }
         return result;
     }
@@ -30,12 +30,13 @@ public class MoshiUtils {
             JsonAdapter<Object> jsonAdapter = mMoshi.adapter(Object.class);
             result = jsonAdapter.toJson(object);
         } catch (Exception e) {
-            TimberUtils.d("对象无法转换json");
+            LogUtils.d("对象无法转换json");
         }
         return result;
     }
 
     public static void addAdapter(MoshiAdapter.MoshiAdapterListener moshiAdapterListener) {
+
         MoshiAdapter moshiAdapter = new MoshiAdapter();
         moshiAdapter.setMoshiAdapterListener(moshiAdapterListener);
 
