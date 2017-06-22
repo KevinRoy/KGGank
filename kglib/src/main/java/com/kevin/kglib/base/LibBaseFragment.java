@@ -17,7 +17,7 @@ import io.reactivex.disposables.Disposable;
  * Created by kevin on 16/6/18.
  */
 
-public abstract class LibBaseFragment<T> extends Fragment implements LibIBaseView {
+public abstract class LibBaseFragment extends Fragment implements LibIBaseView {
 
     private Unbinder unbinder;
     private View rootView;

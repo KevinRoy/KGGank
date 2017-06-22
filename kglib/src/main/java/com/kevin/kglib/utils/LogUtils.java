@@ -26,7 +26,7 @@ public class LogUtils {
 
     public static void e(String tag, String e) {
         if (isLog)
-            Log.d(TextUtils.isEmpty(tag) ? LOGTAG : tag, e);
+            Log.e(TextUtils.isEmpty(tag) ? LOGTAG : tag, e);
     }
 
     public static void e(String e) {
@@ -35,7 +35,7 @@ public class LogUtils {
 
     public static void i(String tag, String i) {
         if (isLog)
-            Log.d(TextUtils.isEmpty(tag) ? LOGTAG : tag, i);
+            Log.i(TextUtils.isEmpty(tag) ? LOGTAG : tag, i);
     }
 
     public static void i(String i) {

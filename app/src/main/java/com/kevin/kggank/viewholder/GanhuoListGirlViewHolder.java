@@ -46,7 +46,7 @@ public class GanhuoListGirlViewHolder extends BaseRecyclerViewHolder<GanhuoEntit
         setOnItemClickListener(v -> {
             if (strings != null && strings.size() > 0) {
                 Intent intent = new Intent(getContext(), GanhuoDetailActivity.class);
-                intent.putStringArrayListExtra(GanhuoDetailActivity.DETAIL, (ArrayList<String>) strings);
+                intent.putStringArrayListExtra(GanhuoDetailActivity.Companion.getDETAIL(), (ArrayList<String>) strings);
                 getContext().startActivity(intent);
             }
         });
