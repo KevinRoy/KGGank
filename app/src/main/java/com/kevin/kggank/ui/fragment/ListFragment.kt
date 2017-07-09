@@ -1,32 +1,24 @@
 package com.kevin.kggank.ui.fragment
 
 
-import android.support.v4.app.Fragment
-import android.support.v4.widget.SwipeRefreshLayout
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+//import com.kevin.kggank.viewholder.databean.GanhuoListGirlDayBean
 
+import android.support.v4.app.Fragment
+import android.support.v7.widget.LinearLayoutManager
 import com.kevin.kggank.R
-import com.kevin.kggank.base.BaseFragment
 import com.kevin.kggank.entity.GanhuoEntity
 import com.kevin.kggank.ui.presenter.ListPresenter
 import com.kevin.kggank.ui.view.IlistView
-//import com.kevin.kggank.viewholder.databean.GanhuoListGirlDayBean
+import com.kevin.kglib.base.LibBaseFragment
 import com.steve.creact.library.adapter.CommonRecyclerAdapter
 import com.steve.creact.library.display.DisplayBean
-
-import java.util.ArrayList
-
-import butterknife.BindView
+import kotlinx.android.synthetic.main.fragment_list.*
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class ListFragment : BaseFragment(), IlistView {
-    @BindView(R.id.list)
-    internal var list: RecyclerView? = null
-    @BindView(R.id.swipe)
-    internal var swipe: SwipeRefreshLayout? = null
+class ListFragment : LibBaseFragment(), IlistView {
 
     private var adapter: CommonRecyclerAdapter? = null
     private var listPresenter: ListPresenter? = null
@@ -58,7 +50,6 @@ class ListFragment : BaseFragment(), IlistView {
     }
 
     companion object {
-
         val instance: ListFragment
             get() = ListFragment()
     }

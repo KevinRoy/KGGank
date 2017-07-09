@@ -3,15 +3,11 @@ package com.kevin.kggank.ui.activity
 import android.content.Intent
 import android.graphics.drawable.AnimationDrawable
 import android.os.Handler
-import android.widget.ImageView
-
 import com.kevin.kggank.R
-import com.kevin.kggank.base.BaseActivity
-
-import butterknife.BindView
+import com.kevin.kglib.base.LibBaseActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 
-class GuideActivity : BaseActivity() {
+class GuideActivity : LibBaseActivity() {
 
     override fun getLayout(): Int {
         return R.layout.activity_splash

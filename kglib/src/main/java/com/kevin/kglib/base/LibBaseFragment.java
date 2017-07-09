@@ -8,8 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
@@ -19,7 +17,6 @@ import io.reactivex.disposables.Disposable;
 
 public abstract class LibBaseFragment extends Fragment implements LibIBaseView {
 
-    private Unbinder unbinder;
     private View rootView;
     private LibBasePresenter presenter;
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
@@ -43,7 +40,6 @@ public abstract class LibBaseFragment extends Fragment implements LibIBaseView {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         if (rootView == null) {
             rootView = inflater.inflate(getLayout(), container, false);
-            unbinder = ButterKnife.bind(this, rootView);
         }
 
         ViewGroup parent = (ViewGroup) rootView.getParent();
@@ -72,8 +68,6 @@ public abstract class LibBaseFragment extends Fragment implements LibIBaseView {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        if (unbinder != null)
-            unbinder.unbind();
     }
 
     @Override

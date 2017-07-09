@@ -1,12 +1,12 @@
 package com.kevin.kggank.ui.fragment
 
 import com.kevin.kggank.R
-import com.kevin.kggank.base.BaseFragment
+import com.kevin.kglib.base.LibBaseFragment
 
 /**
  * Created by kevin on 16/5/13.
  */
-class PicFragment : BaseFragment() {
+class PicFragment : LibBaseFragment() {
 
     override fun getLayout(): Int {
         return R.layout.fragment_pic

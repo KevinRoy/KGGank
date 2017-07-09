@@ -1,28 +1,22 @@
 package com.kevin.kggank.ui.fragment
 
 
+//import com.kevin.kggank.viewholder.databean.GanhuoTypeBean
+
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-
 import com.kevin.kggank.R
-import com.kevin.kggank.base.BaseFragment
-import com.kevin.kggank.constants.Category
-import com.kevin.kggank.entity.GanhuoTypeEntity
-//import com.kevin.kggank.viewholder.databean.GanhuoTypeBean
+import com.kevin.kglib.base.LibBaseFragment
 import com.steve.creact.library.adapter.CommonRecyclerAdapter
 import com.steve.creact.library.display.DisplayBean
-
-import java.util.ArrayList
-
-import butterknife.BindView
+import java.util.*
 
 /**
  * A simple [Fragment] subclass.
  */
-class TypeFragment : BaseFragment() {
+class TypeFragment : LibBaseFragment() {
 
-    @BindView(R.id.list)
     internal var list: RecyclerView? = null
 
     private var adapter: CommonRecyclerAdapter? = null

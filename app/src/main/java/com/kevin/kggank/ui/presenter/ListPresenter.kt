@@ -1,17 +1,16 @@
 package com.kevin.kggank.ui.presenter
 
-import com.kevin.kggank.base.BasePresenter
 import com.kevin.kggank.entity.GanhuoListEntity
 import com.kevin.kggank.ui.model.ListModel
 import com.kevin.kggank.ui.view.IlistView
-
+import com.kevin.kglib.base.LibBasePresenter
 import io.reactivex.subscribers.DisposableSubscriber
 
 /**
  * Created by kevin on 16/5/18.
  */
 class ListPresenter
-constructor(mView: IlistView) : BasePresenter<IlistView>(mView) {
+constructor(mView: IlistView) : LibBasePresenter<IlistView>(mView) {
 
     private val model = ListModel(this)
 

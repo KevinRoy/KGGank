@@ -4,7 +4,6 @@ import android.app.Application;
 
 import com.kevin.kglib.utils.ContextUtils;
 
-import butterknife.ButterKnife;
 import retrofit2.Converter;
 
 /**
@@ -21,8 +20,6 @@ public abstract class LibBaseApplication extends Application {
 
         LibBaseConfig.baseUrl = getDefaultBaseUrl();
         LibBaseConfig.factory = getConverterFactory();
-
-        ButterKnife.setDebug(true);
     }
 
     /**

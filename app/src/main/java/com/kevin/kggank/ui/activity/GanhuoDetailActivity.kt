@@ -1,31 +1,25 @@
 package com.kevin.kggank.ui.activity
 
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.widget.ImageView
+//import com.kevin.kggank.viewholder.databean.GanhuoDetailContentBean
+//import com.kevin.kggank.viewholder.databean.GanhuoDetailImgBean
+//import com.kevin.kggank.viewholder.databean.GanhuoDetailTitleBean
 
+import android.support.v7.widget.LinearLayoutManager
 import com.kevin.kggank.R
-import com.kevin.kggank.base.BaseActivity
 import com.kevin.kggank.entity.GanhuoEntity
 import com.kevin.kggank.entity.GanhuoOneDayEntity
 import com.kevin.kggank.ui.presenter.GanhuoDetailPresenter
 import com.kevin.kggank.ui.view.IGanhuoDetailView
-//import com.kevin.kggank.viewholder.databean.GanhuoDetailContentBean
-//import com.kevin.kggank.viewholder.databean.GanhuoDetailImgBean
-//import com.kevin.kggank.viewholder.databean.GanhuoDetailTitleBean
+import com.kevin.kglib.base.LibBaseActivity
 import com.steve.creact.library.adapter.CommonRecyclerAdapter
 import com.steve.creact.library.display.DisplayBean
-
-import java.util.ArrayList
-
-import butterknife.BindView
-import kotlinx.android.synthetic.main.activity_ganhuo_detail.*
+import java.util.*
 
 /**
  * Created by kevin on 16/5/22.
  */
 
-class GanhuoDetailActivity : BaseActivity(), IGanhuoDetailView {
+class GanhuoDetailActivity : LibBaseActivity(), IGanhuoDetailView {
 
     private var ganhuoDetailPresenter: GanhuoDetailPresenter? = null
     private var adapter: CommonRecyclerAdapter? = null
@@ -48,7 +42,7 @@ class GanhuoDetailActivity : BaseActivity(), IGanhuoDetailView {
         val strings = intent.getStringArrayListExtra(DETAIL)
         ganhuoDetailPresenter = GanhuoDetailPresenter(this@GanhuoDetailActivity, strings)
 
-        list!!.layoutManager = LinearLayoutManager(this)
+//        list!!.layoutManager = LinearLayoutManager(this)
         adapter = CommonRecyclerAdapter()
     }
 
@@ -73,7 +67,7 @@ class GanhuoDetailActivity : BaseActivity(), IGanhuoDetailView {
         addInfo(entity.videoInfo)
 
         adapter!!.loadData(displayBeans)
-        list!!.adapter = adapter;
+//        list!!.adapter = adapter;
     }
 
     private fun addInfo(entities: List<GanhuoEntity>?) {

@@ -1,12 +1,9 @@
 package com.kevin.kggank.ui.presenter
 
-import com.kevin.kggank.base.BasePresenter
 import com.kevin.kggank.entity.GanhuoOneDayEntity
 import com.kevin.kggank.ui.model.GanhuoDetailModel
 import com.kevin.kggank.ui.view.IGanhuoDetailView
-
-import java.util.ArrayList
-
+import com.kevin.kglib.base.LibBasePresenter
 import io.reactivex.subscribers.DisposableSubscriber
 
 /**
@@ -14,13 +11,12 @@ import io.reactivex.subscribers.DisposableSubscriber
  */
 
 class GanhuoDetailPresenter
-constructor(mView: IGanhuoDetailView, dates: List<String>) : BasePresenter<IGanhuoDetailView>(mView) {
+constructor(mView: IGanhuoDetailView, dates: List<String>) : LibBasePresenter<IGanhuoDetailView>(mView) {
 
-    private var model: GanhuoDetailModel
-    private var dates: List<String>
+    private var model: GanhuoDetailModel = GanhuoDetailModel(this)
+    private var dates: List<String> = ArrayList()
 
     init {
-        model = GanhuoDetailModel(this)
         this.dates = dates
 
         if (dates.size == 3) {

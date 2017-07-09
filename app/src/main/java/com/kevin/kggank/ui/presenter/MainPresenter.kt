@@ -1,20 +1,18 @@
 package com.kevin.kggank.ui.presenter
 
 import android.widget.Toast
-
-import com.kevin.kggank.base.BasePresenter
 import com.kevin.kggank.entity.GanhuoListEntity
 import com.kevin.kggank.ui.model.MainModel
 import com.kevin.kggank.ui.view.IMainView
+import com.kevin.kglib.base.LibBasePresenter
 import com.kevin.kglib.utils.NetWorkUtils
-
 import io.reactivex.subscribers.DisposableSubscriber
 
 /**
  * Created by kevin on 16/4/15.
  */
 class MainPresenter
-constructor(mView: IMainView) : BasePresenter<IMainView>(mView) {
+constructor(mView: IMainView) : LibBasePresenter<IMainView>(mView) {
 
     private val mainModel: MainModel
 
@@ -24,7 +22,7 @@ constructor(mView: IMainView) : BasePresenter<IMainView>(mView) {
     }
 
     fun getGirls(pageNo: Int) {
-        if (NetWorkUtils.isConnecting()) {
+        if (NetWorkUtils.isConnected()) {
             addSubscribe(mainModel.getGirls(pageNo).subscribeWith(object : DisposableSubscriber<GanhuoListEntity>() {
                 override fun onNext(ganhuoListEntity: GanhuoListEntity?) {
                     if (ganhuoListEntity != null &&
